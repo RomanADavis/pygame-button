@@ -15,6 +15,9 @@ class Button():
     self.color = DARK_BLUE
     self.over_color = RED_BROWN
 
+    self.font = pygame.font.SysFont("Arial", 20)
+    self.text = self.font.render("QUIT", True, self.text_color)
+
   def set_rect(self):
     self.rect = [self.x, self.y, self.width, self.height]
 
@@ -25,3 +28,7 @@ class Button():
 
   def draw(self):
     pygame.draw.rect(SCREEN, self.color, self.rect)
+    SCREEN.blit(self.text, 
+                (self.x + (self.width - self.text.get_width()) // 2,
+                self.y + (self.height - self.text.get_height()) // 2)
+                )
