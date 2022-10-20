@@ -12,8 +12,9 @@ class Button():
     self.set_rect()
 
     self.text_color = WHITE
-    self.color = DARK_BLUE
-    self.over_color = RED_BROWN
+    self.default_color = DARK_BLUE
+    self.hover_color = RED_BROWN
+    self.color = self.default_color
 
     self.font = pygame.font.SysFont("Arial", 20)
     self.text = self.font.render("QUIT", True, self.text_color)
@@ -27,6 +28,14 @@ class Button():
       if (self.x <= mouse_x <= self.x + self.width) and (self.y <= mouse_y <= self.y + self.height):
         return True
     return False
+
+  def hovered(self, event):
+    if event.type == pygame.MOUSEMOTION:
+      mouse_x, mouse_y = event.pos
+      if (self.x <= mouse_x <= self.x + self.width) and (self.y <= mouse_y <= self.y + self.height):
+        self.color = self.hover_color
+      else:
+        self.color = self.default_color
 
   def center(self):
     self.x = SCREEN.get_width() // 2 - self.width // 2

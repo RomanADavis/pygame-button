@@ -15,6 +15,7 @@ class Game():
       for event in pygame.event.get():
         if event.type == pygame.QUIT or button.is_clicked(event):
           game_over = True
+        button.hovered(event)
       button.draw()
       pygame.display.update()
     
