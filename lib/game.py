@@ -13,7 +13,7 @@ class Game():
     button.center()
     while not game_over:
       for event in pygame.event.get():
-        if event.type == pygame.QUIT:
+        if event.type == pygame.QUIT or button.is_clicked(event):
           game_over = True
       button.draw()
       pygame.display.update()

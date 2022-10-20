@@ -21,6 +21,13 @@ class Button():
   def set_rect(self):
     self.rect = [self.x, self.y, self.width, self.height]
 
+  def is_clicked(self, event):
+    if event.type == pygame.MOUSEBUTTONDOWN:
+      mouse_x, mouse_y = event.pos
+      if (self.x <= mouse_x <= self.x + self.width) and (self.y <= mouse_y <= self.y + self.height):
+        return True
+    return False
+
   def center(self):
     self.x = SCREEN.get_width() // 2 - self.width // 2
     self.y = SCREEN.get_height() // 2 - self.height // 2
